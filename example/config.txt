@@ -1,0 +1,17 @@
+[package]
+name= "test"
+var3 = "fgfrb"
+
+[dependency]
+libcurl="v2.4.1"
+libcurl="hjv"
+
+
+
+
+
+
+
+
+
+
