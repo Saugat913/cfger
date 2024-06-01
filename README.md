@@ -9,8 +9,8 @@ CFGER is a simple configuration parser written in c.It is written for the projec
 
 ### Clone the Repository:
 ```sh
-git clone 
-cd <repository_directory>
+git clone https://github.com/Saugat913/cfger.git
+cd cfger
 ```
 ### Build the Project:
 
