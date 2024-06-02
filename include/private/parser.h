@@ -7,6 +7,6 @@
 #include "config.h"
 #include "lexer.h"
 
-struct ArrayOfSection parse(char *file_content);
+struct cfger_ArrayOfSection parse(char *file_content);
 
 #endif

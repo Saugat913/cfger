@@ -4,7 +4,7 @@
 
 char *token_str[TOKEN_EOF + 1];
 
-void init_lexer(char *src, Lexer *lexer)
+void cfger_init_lexer(char *src, cfger_Lexer *lexer)
 {
     lexer->src = src;
     lexer->pos = 0;
@@ -24,7 +24,7 @@ void init_lexer(char *src, Lexer *lexer)
     token_str[TOKEN_STRING] = "string";
 }
 
-void get_next_token(Lexer *lexer)
+void cfger_get_next_token(cfger_Lexer *lexer)
 {
     while (lexer->src[lexer->pos] == ' ' || lexer->src[lexer->pos] == '\t')
         lexer->pos++;
@@ -60,7 +60,7 @@ void get_next_token(Lexer *lexer)
     }
     else
     {
-        Token tok;
+        cfger_Token tok;
         switch (lexer->src[lexer->pos])
         {
         case '[':
@@ -95,7 +95,7 @@ void get_next_token(Lexer *lexer)
     }
 }
 
-void display_current_token(Lexer *lexer)
+void cfger_display_current_token(cfger_Lexer *lexer)
 {
     switch (lexer->curr_token)
     {

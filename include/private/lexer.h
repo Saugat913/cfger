@@ -22,22 +22,22 @@ typedef enum
 
     TOKEN_UNKNOWN,
     TOKEN_EOF
-} Token;
+} cfger_Token;
 
 extern char *token_str[TOKEN_EOF + 1];
 typedef struct
 {
     char *src;
     size_t pos;
-    Token curr_token;
+    cfger_Token curr_token;
 
     char *value;
-} Lexer;
+} cfger_Lexer;
 
-void init_lexer(char *src, Lexer *lexer);
-void get_next_token(Lexer *lexer);
+void cfger_init_lexer(char *src, cfger_Lexer *lexer);
+void cfger_get_next_token(cfger_Lexer *lexer);
 
 // ONLY for debug purpose
-void display_current_token(Lexer *lexer);
+void cfger_display_current_token(cfger_Lexer *lexer);
 
 #endif

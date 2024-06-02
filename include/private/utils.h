@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-size_t get_file_size(FILE *fp);
-char *read_config_file(char *file_name);
+size_t cfger_get_file_size(FILE *fp);
+char *cfger_read_config_file(char *file_name);
 
 #endif

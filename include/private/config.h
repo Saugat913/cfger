@@ -4,15 +4,72 @@
 #include "../cfger/config.h"
 #include <stdio.h>
 #include <stdlib.h>
-bool init_array_of_field(struct ArrayOfField *fields, size_t initial_size);
+#include <string.h>
 
-bool push_to_field_array(struct ArrayOfField *fields, struct Field field);
+typedef enum
+{
+    FIELD_STRING,
+    FIELD_MAP
+} cfger_FieldValueType;
 
-bool init_array_of_section(struct ArrayOfSection *section_array, size_t initial_size);
+struct cfger_FieldMap
+{
+    char *key;
+    char *value;
+};
 
-bool push_to_section_array(struct ArrayOfSection *section_array, struct Section section);
+struct cfger_FieldValue
+{
+    cfger_FieldValueType type;
+    union
+    {
+        char *str_value;
+        struct cfger_FieldMap map_value;
+    } value;
+};
 
-void display_field(struct Field *field);
-void display_section(struct Section *section);
+struct cfger_Field
+{
+    char *field_name;
+    struct cfger_FieldValue value;
+};
+
+struct cfger_ArrayOfField
+{
+    struct cfger_Field *fields;
+    size_t count;
+    size_t capacity;
+};
+
+struct cfger_Section
+{
+    char *title_name;
+    struct cfger_ArrayOfField field;
+};
+
+struct cfger_ArrayOfSection
+{
+    struct cfger_Section *sections;
+    size_t count;
+    size_t capacity;
+};
+
+struct cfger_Config_t
+{
+    struct cfger_ArrayOfSection sections;
+};
+
+typedef struct cfger_Config_t *cfger_Config;
+typedef struct cfger_Section *cfger_Section;
+
+bool cfger_init_array_of_field(struct cfger_ArrayOfField *fields, size_t initial_size);
+
+bool cfger_push_to_field_array(struct cfger_ArrayOfField *fields, struct cfger_Field field);
+
+bool cfger_init_array_of_section(struct cfger_ArrayOfSection *section_array, size_t initial_size);
+
+bool cfger_push_to_section_array(struct cfger_ArrayOfSection *section_array, struct cfger_Section section);
+
+void cfger_display_field(struct cfger_Field *field);
 
 #endif
